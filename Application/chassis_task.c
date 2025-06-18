@@ -151,7 +151,7 @@ void Chassis_Set_Mode(void)
 
         if (remote_control.switch_left == Switch_Up && LastLeftSwich != Switch_Up)
             flag = (flag + 1) % 4;
-        else if (remote_control.switch_right == Switch_Down && LastLeftSwich != Switch_Down)
+        else if (remote_control.switch_left== Switch_Down && LastLeftSwich != Switch_Down)
             flag = (flag - 1 + 5) % 5;
 
         switch (flag)
@@ -200,6 +200,7 @@ void Chassis_Set_Mode(void)
     /*Refresh*/
     LastKeyCode = remote_control.key_code;
 		LastRightSwitch = remote_control.switch_right;
+        LastLeftSwich = remote_control.switch_left;
 }
 
 void Chassis_Get_CtrlValue(void)
@@ -428,7 +429,7 @@ void Chassis_Set_Control(void)
     }
     if (Chassis.Mode == Sin_Mode)
     {
-        Chassis.Vr = 300 * sin(3 * t);
+        Chassis.Vr = 300 * sin(3 * t) + 700;
     }
     
 
